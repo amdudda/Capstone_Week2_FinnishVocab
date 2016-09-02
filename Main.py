@@ -1,5 +1,7 @@
+''' nb: this project requires python 3.x to handle utf-8 characters properly.'''
 from CreateDB import *
 from Vocabulary import *
+import random
 
 # some static values
 OPTION_F2E = '1'
@@ -31,7 +33,7 @@ def showmenu():
 def quizme():
     while True:
         showmenu()
-        userinput = raw_input("> ")
+        userinput = input("> ")
         if userinput == OPTION_F2E:
             # quiz on Finnish recognition
             quizVocab("Finnish")
@@ -55,12 +57,14 @@ def quizVocab(language):
     # language tells the computer whether to display finnish words or english words as prompts.
     print(language + " vocab recognition not impelemented yet")
     # TODO pick a random vocabulary item and see if the user can give the correct answer.
-    print(str(getLastID()))
+    # generate a random integer in the range 1..lastID
+    vocabID = random.randint(1,getLastID())
+    # print out the selected item
+    print(getVocabByID(vocabID))
 
 '''
 BODY OF CODE
 '''
+#PrintAllRecords()
+print(getVocabByID(7))
 quizme()
-# myWord = getVocabByID(5)
-# if myWord != None:
-#     print(myWord)

@@ -4,6 +4,10 @@
 
 This project was inspired by my desire to attend WorldCon 75.  This will take place in Helsinki, Finland, in August of 2017.  I would like to have at least a minimal vocabulary for simple navigation, so I designed this application to help practice my vocabulary.
 
+## Requirements
+
+This code uses UTF-8 characters (those umlauts, natch).  Consequently, this code needs to be compiled with Python version 3.x to run properly.
+
 ## Features
 
 Vocabulary terms will be stored in a simple database.  Initially it will consist of a single table holding a Finnish word and its English translation.  I'm going to ignore the possibility of homophones in Finnish, on the assumption that these are unlikely in beginner vocabulary.
