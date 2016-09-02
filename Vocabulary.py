@@ -32,7 +32,6 @@ MISC VOCABULARY-RELATED METHODS
 def getVocabByID(ID):
     try:
         # this returns a Vocabulary item based on the record ID in the database
-        #queryString = ("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", ID)
         conn = sqlite3.connect('FinnVocab.db')
 
         cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", str(ID))
@@ -53,3 +52,19 @@ def getVocabByID(ID):
         conn.close()
         return theData
 # end getByID
+
+def getLastID():
+    # method to get the last ID number in the database so we can set a random range for pulling record IDs.
+    lastID = 0
+    try:
+        conn = sqlite3.connect('FinnVocab.db')
+        cursor = conn.execute("SELECT MAX(ID) FROM VOCABULARY;")
+        lastID = cursor.fetchone()[0]
+    except sqlite3.Error as e:
+        print("Unable to identify last record in db")
+        traceback.print_exc()
+    finally:
+        # always close the connection when we're done with it.
+        conn.close()
+
+    return lastID

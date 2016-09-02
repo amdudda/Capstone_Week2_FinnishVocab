@@ -21,8 +21,8 @@ DATABASE SETUP BLOCK - IGNORE UNLESS YOU NEED TO MODIFY DATA.
 FUNCTIONS USED BY MAIN MODULE
 '''
 def showmenu():
-    options = "1. Test Finnish to English\n" + \
-        "2. Test English to Finnish\n" +  \
+    options = "1. Quiz: Finnish to English\n" + \
+        "2. Quiz: English to Finnish\n" +  \
         "3. Add Vocabulary\n" +  \
         "4. Quit\n"
     print(options)
@@ -33,9 +33,10 @@ def quizme():
         showmenu()
         userinput = raw_input("> ")
         if userinput == OPTION_F2E:
-            print("not impelemented yet")
+            # quiz on Finnish recognition
+            quizVocab("Finnish")
         elif userinput == OPTION_E2F:
-            print("not impelemented yet")
+            quizVocab("English")
         elif userinput == OPTION_ADD:
             print("not impelemented yet")
         elif userinput == OPTION_QUIT:
@@ -48,6 +49,13 @@ def quizme():
             print("You have not made a valid selection. Please try again.")
     # end while loop
 # End quizme
+
+def quizVocab(language):
+    # asks a player to type in the translation of a word
+    # language tells the computer whether to display finnish words or english words as prompts.
+    print(language + " vocab recognition not impelemented yet")
+    # TODO pick a random vocabulary item and see if the user can give the correct answer.
+    print(str(getLastID()))
 
 '''
 BODY OF CODE
