@@ -71,7 +71,7 @@ def PrintAllRecords():
     try:
         # connection string to tell it what database to connect to.  If DNE, it creates a new db.
         conn = sqlite3.connect('FinnVocab.db')
-        #conn.text_factory = str
+        # conn.text_factory = str
 
         # set our cursor at the beginning of the result set.
         cursor = conn.execute("SELECT * FROM VOCABULARY;")
@@ -87,7 +87,7 @@ def PrintAllRecords():
         print("Unable to access or print the records in the Vocabulary table.")
         # print out the stack trace
         if dev: traceback.print_exc()
-        # NB: no changes should have happened, but let's be paranoid and rollback just in case our code truly börks something.
+        # NB: no changes should have happened, but let's be paranoid and rollback just in case our code truly borks something.
         conn.rollback()
     finally:
         # close the connection

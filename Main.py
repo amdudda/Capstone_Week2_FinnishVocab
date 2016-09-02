@@ -1,8 +1,25 @@
 from CreateDB import *
+from Vocabulary import *
 
-# create the database and its tables
+'''
+DATABASE SETUP BLOCK - IGNORE UNLESS YOU NEED TO MODIFY DATA.
+'''
+# create the database and its table
 #CreateDB()
 # insert records
-InsertVocabulary("vocab1.txt")
+#InsertVocabulary("vocab1.txt")
 # and try printing them
-PrintAllRecords()
+#PrintAllRecords()
+
+'''
+FUNCTIONS USED BY MAIN MODULE
+'''
+
+
+
+'''
+BODY OF CODE
+'''
+myWord = getVocabByID(99)
+if myWord != None:
+    print(myWord)
