@@ -33,7 +33,7 @@ def getVocabByID(ID):
     try:
         # this returns a Vocabulary item based on the record ID in the database
         conn = sqlite3.connect('FinnVocab.db')
-
+        print(str(ID))
         cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", str(ID))
 
         # there should be exactly one result returned
