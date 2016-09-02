@@ -31,10 +31,13 @@ MISC VOCABULARY-RELATED METHODS
 
 def getVocabByID(ID):
     try:
+        #theData = ""
         # this returns a Vocabulary item based on the record ID in the database
         conn = sqlite3.connect('FinnVocab.db')
-        print(str(ID))
-        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", str(ID))
+
+        num2use = str(ID)
+        print(num2use)
+        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", num2use)
 
         # there should be exactly one result returned
         record = cursor.fetchone()

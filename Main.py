@@ -66,6 +66,6 @@ def quizVocab(language):
 BODY OF CODE
 '''
 #PrintAllRecords()
-# TODO why does retrieve # 13 not work; it exists in the database!
-print(getVocabByID(13))
+# TODO why does retrieve # 13 not work; it exists in the database! -- it doesn't work with any 2-digit ID.
+print(getVocabByID(12))
 quizme()
