@@ -32,13 +32,13 @@ def quizme():
     while True:
         showmenu()
         userinput = raw_input("> ")
-        if userinput == "1":
+        if userinput == OPTION_F2E:
             print("not impelemented yet")
-        elif userinput == "2":
+        elif userinput == OPTION_E2F:
             print("not impelemented yet")
-        elif userinput == "3":
+        elif userinput == OPTION_ADD:
             print("not impelemented yet")
-        elif userinput == "4":
+        elif userinput == OPTION_QUIT:
             print("Kiitos!")
             # exit the program
             exit()
