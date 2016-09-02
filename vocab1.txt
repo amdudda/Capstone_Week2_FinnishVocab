@@ -1,0 +1,13 @@
+koti,home
+kieli,language
+pohjoinen,north
+saari,island
+vahva,strong
+heikko,weak
+päivä,day
+yö,night
+lumi,snow
+tuuli,wind
+tuli,fire
+peikko,troll
+kissa,cat

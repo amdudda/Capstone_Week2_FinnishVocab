@@ -1,5 +1,5 @@
 # database setup code - use with caution!
-
+# most of this is modelled on the practice exercise done in class.
 import sqlite3
 
 def CreateDB():
@@ -11,7 +11,7 @@ def CreateDB():
 
     # this sends the create table string to the database so it can run it
     conn.execute('''CREATE TABLE VOCABULARY
-    (ID INT PRIMARY KEY NOT NULL,
+    (ID INTEGER PRIMARY KEY,
     FINNISH TEXT NOT NULL,
     ENGLISH TEXT NOT NULL);''')
     print("Table created successfully");
@@ -23,17 +23,27 @@ def CreateDB():
 def InsertRecords(filename):
     # connection string to tell it what database to connect to.  If DNE, it creates a new db.
     conn = sqlite3.connect('FinnVocab.db')
+    # Python does not send string data natively, have to tell it to do so explicitly -
+    # see http://stackoverflow.com/questions/10268518/python-string-to-unicode
+    conn.text_factory = str
+
     # takes a flat file and inserts records into the database
     fin = open(filename)
 
     for line in fin:
-        vocab = line.split("\t")
+        vocab = line.split(",")
         finn = vocab[0]
         eng = vocab[1]
-        # We're going to let the database autoassign record id numbers
-        conn.execute("INSERT INTO VOCABULARY (FINNISH,ENGLISH) \
-          VALUES (?,?)", (finn,eng));
+        # debugging: this works...
+        # print(finn + ":" + eng)
 
+        # We're going to let the database autoassign record id numbers
+        result = conn.execute("INSERT INTO VOCABULARY (FINNISH,ENGLISH) \
+          VALUES (?,?);", (finn,eng));
+
+    conn.commit()
+
+    print("records inserted from " + filename)
     # close the connection
     conn.close()
 # end InsertRecords
@@ -41,10 +51,12 @@ def InsertRecords(filename):
 def PrintAllRecords():
     # connection string to tell it what database to connect to.  If DNE, it creates a new db.
     conn = sqlite3.connect('FinnVocab.db')
+    #conn.text_factory = str
 
     # set our cursor at the beginning of the result set.
-    cursor = conn.execute("SELECT * FROM VOCABULARY")
+    cursor = conn.execute("SELECT * FROM VOCABULARY;")
 
+    # TODO why is it not printing out data?
     for row in cursor:
         print("ID = " + str(row[0]))
         print("FINNISH = " + row[1])
@@ -54,3 +66,4 @@ def PrintAllRecords():
 
     # close the connection
     conn.close()
+# end PrintAllRecords

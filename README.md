@@ -14,4 +14,7 @@ I might eventually add a phrase dictionary to quiz myself on tourist phrases.
 
 Finnish is syntactically very different from English.  It features heavily suffixing agglutinative morphology and numerous case endings.  Prosody is also markedly different; almost all words have stress on the first syllable, and questions are identified lexically rather than through intonation.
 
-This course does not cover grammar, prosody, or phonology.  It assumes you already know how to read and pronounce Finnish words, and you're on your own for figuring out how to construct syntactially valid statements.
+This tutor does not cover grammar, prosody, or phonology.  It assumes you already know how to read and pronounce Finnish words, and you're on your own for figuring out how to construct syntactially valid statements.
+
+## Credits
+vocab1.txt is gleaned from http://sssscomic.com/comic.php?page=195
