@@ -44,7 +44,7 @@ def quizme():
         elif userinput == OPTION_E2F:
             quizVocab(LANG_EN)
         elif userinput == OPTION_ADD:
-            print("not impelemented yet")
+            addVocab()
         elif userinput == OPTION_QUIT:
             print("Kiitos!")
             # exit the program
@@ -72,9 +72,15 @@ def quizVocab(language):
     else:
         print("Sorry, the correct answer is " + xlate + ".")
 
+def addVocab():
+    suomi = input("What is the Finnish word you wish to add?\n")
+    englanti = input("What is the English translation for " + suomi + "?\n")
+    AddVocab(suomi,englanti)
+    # debugging
+    PrintAllRecords()
 '''
 BODY OF CODE
 '''
-#PrintAllRecords()
+# PrintAllRecords()
 # print(getVocabByID(9))
 quizme()

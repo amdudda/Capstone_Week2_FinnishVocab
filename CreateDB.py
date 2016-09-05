@@ -93,3 +93,26 @@ def PrintAllRecords():
         # close the connection
         conn.close()
 # end PrintAllRecords
+
+def AddVocab(s,e):
+    # this lets users add new vocabulary to the database
+    try:
+        # connection string to tell it what database to connect to.  If DNE, it creates a new db.
+        conn = sqlite3.connect('FinnVocab.db')
+        # make absolutely sure it can handle unicode strings
+        conn.text_factory = str
+
+        # insert the record into the database
+        conn.execute("INSERT INTO VOCABULARY (FINNISH, ENGLISH) VALUES(?,?);", (s,e))
+        # don't forget to commit your changes!!!
+        conn.commit()
+        print("Successfully added '%s' to the dictionary as '%s'."% (s,e))
+    except sqlite3.Error as e:
+        # in case of error, notify user and roll back changes
+        print("Unable to add %s, %s to dictionary."% (s,e))
+        if dev: traceback.print_exc()
+        conn.rollback()
+    finally:
+        # close the connection
+        conn.close()
+# end AddVocab
