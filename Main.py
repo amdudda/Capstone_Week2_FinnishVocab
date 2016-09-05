@@ -60,8 +60,8 @@ def quizVocab(language):
     # asks a player to type in the translation of a word
     # language tells the computer whether to display finnish words or english words as prompts.
     # pick a random vocabulary item and see if the user can give the correct answer.
-    # TODO generate a random integer in the range 1..lastID once bug is fixed.
-    vocabID = random.randint(1,9) # ,getLastID())
+    # generate a random integer in the range 1..lastID
+    vocabID = random.randint(1,getLastID())
     # print out the selected item
     word = getVocabByID(vocabID)
     question = "What is '" + word.getVocab(language) + "' in " + language + "?"
@@ -82,5 +82,5 @@ def addVocab():
 BODY OF CODE
 '''
 # PrintAllRecords()
-print(getVocabByID(12))
+# print(getVocabByID(12))
 quizme()

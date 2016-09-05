@@ -40,7 +40,6 @@ MISC VOCABULARY-RELATED METHODS
 '''
 
 def getVocabByID(ID):
-    # TODO fix bug in getting a vocab item: only works with single-digit IDs
     try:
         #theData = ""
         # this returns a Vocabulary item based on the record ID in the database
@@ -48,7 +47,10 @@ def getVocabByID(ID):
 
         num2use = str(ID)
         # debugging: print(num2use)
-        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?;", (num2use))
+        # need to pass a tuple; if you pass a plain string, the query breaks on anything >=10
+        # see http://stackoverflow.com/questions/4409539/pythonsqlite-the-like-query-with-wildcards#4409584
+        # for where I found the answer (while working on team project & looking for something totally unrelated, of course! :D )
+        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?;", (num2use,))
 
         # there should be exactly one result returned
         record = cursor.fetchone()
