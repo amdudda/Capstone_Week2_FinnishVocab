@@ -82,5 +82,5 @@ def addVocab():
 BODY OF CODE
 '''
 # PrintAllRecords()
-# print(getVocabByID(9))
+print(getVocabByID(12))
 quizme()

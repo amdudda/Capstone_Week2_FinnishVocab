@@ -48,7 +48,7 @@ def getVocabByID(ID):
 
         num2use = str(ID)
         # debugging: print(num2use)
-        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", num2use)
+        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?;", (num2use))
 
         # there should be exactly one result returned
         record = cursor.fetchone()
