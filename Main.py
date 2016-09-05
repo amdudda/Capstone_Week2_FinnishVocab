@@ -64,7 +64,7 @@ def quizVocab(language):
     vocabID = random.randint(1,getLastID())
     # print out the selected item
     word = getVocabByID(vocabID)
-    question = "What is '" + word.getVocab(language) + "' in " + language + "?"
+    question = "What is '" + word.getVocab(language) + "' in " + language + "?\n"
     xlate = word.getTranslation(language)
     response = input(question)
     if (response == xlate):
