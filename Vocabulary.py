@@ -21,6 +21,16 @@ class Vocabulary():
     def getEnglish(self):
         return self.English
 
+    def getVocab(self,language):
+        if language == "Finnish": return self.Finnish
+        elif language == "English": return self.English
+        else: return None
+
+    def getTranslation(self,language):
+        if language == "Finnish": return self.English
+        elif language == "English": return self.Finnish
+        else: return None
+
     def __str__(self):
         return str(self.ID) + ", " + self.Finnish + ", " + self.English
 # end class definition for Vocabulary
@@ -30,20 +40,21 @@ MISC VOCABULARY-RELATED METHODS
 '''
 
 def getVocabByID(ID):
+    # TODO fix bug in getting a vocab item: only works with single-digit IDs
     try:
         #theData = ""
         # this returns a Vocabulary item based on the record ID in the database
         conn = sqlite3.connect('FinnVocab.db')
 
         num2use = str(ID)
-        print(num2use)
+        # debugging: print(num2use)
         cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?", num2use)
 
         # there should be exactly one result returned
         record = cursor.fetchone()
         theID = record[0]
-        theFinn = record[1]
-        theEngl = record[2]
+        theFinn = record[1].strip()
+        theEngl = record[2].strip()
         theData = Vocabulary(theID,theFinn,theEngl)
     except sqlite3.Error as e:
         print("Unable to retrieve record number " + str(ID) + ".")

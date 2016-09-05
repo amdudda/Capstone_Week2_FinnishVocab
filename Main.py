@@ -8,6 +8,8 @@ OPTION_F2E = '1'
 OPTION_E2F = '2'
 OPTION_ADD = '3'
 OPTION_QUIT = '4'
+LANG_EN = "English"
+LANG_FI = "Finnish"
 
 '''
 DATABASE SETUP BLOCK - IGNORE UNLESS YOU NEED TO MODIFY DATA.
@@ -36,9 +38,9 @@ def quizme():
         userinput = input("> ")
         if userinput == OPTION_F2E:
             # quiz on Finnish recognition
-            quizVocab("Finnish")
+            quizVocab(LANG_FI)
         elif userinput == OPTION_E2F:
-            quizVocab("English")
+            quizVocab(LANG_EN)
         elif userinput == OPTION_ADD:
             print("not impelemented yet")
         elif userinput == OPTION_QUIT:
@@ -55,17 +57,22 @@ def quizme():
 def quizVocab(language):
     # asks a player to type in the translation of a word
     # language tells the computer whether to display finnish words or english words as prompts.
-    print(language + " vocab recognition not impelemented yet")
-    # TODO pick a random vocabulary item and see if the user can give the correct answer.
-    # generate a random integer in the range 1..lastID
-    vocabID = random.randint(1,getLastID())
+    # pick a random vocabulary item and see if the user can give the correct answer.
+    # TODO generate a random integer in the range 1..lastID once bug is fixed.
+    vocabID = random.randint(1,9) # ,getLastID())
     # print out the selected item
-    print(getVocabByID(vocabID))
+    word = getVocabByID(vocabID)
+    question = "What is '" + word.getVocab(language) + "' in " + language + "?"
+    xlate = word.getTranslation(language)
+    response = input(question)
+    if (response == xlate):
+        print("You are correct!")
+    else:
+        print("Sorry, the correct answer is " + xlate + ".")
 
 '''
 BODY OF CODE
 '''
 #PrintAllRecords()
-# TODO why does retrieve # 13 not work; it exists in the database! -- it doesn't work with any 2-digit ID.
-print(getVocabByID(12))
+# print(getVocabByID(9))
 quizme()
