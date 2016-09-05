@@ -42,8 +42,8 @@ def InsertVocabulary(filename):
 
         for line in fin:
             vocab = line.split(",")
-            finn = vocab[0]
-            eng = vocab[1]
+            finn = vocab[0].strip()
+            eng = vocab[1].strip()
             # debugging: this works...
             # print(finn + ":" + eng)
 
