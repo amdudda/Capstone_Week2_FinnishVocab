@@ -1,7 +1,9 @@
-''' nb: this project requires python 3.x to handle utf-8 characters properly.'''
 from CreateDB import *
 from Vocabulary import *
 import random
+'''
+nb: this project requires python 3.x to handle utf-8 characters properly.
+'''
 
 # some static values
 OPTION_F2E = '1'
