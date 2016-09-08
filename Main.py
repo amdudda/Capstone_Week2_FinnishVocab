@@ -83,7 +83,11 @@ def quizVocab(source_lang):
 def addVocab():
     suomi = input("What is the Finnish word you wish to add?\n")
     englanti = input("What is the English translation for '" + suomi + "'?\n")
-    AddVocab(suomi,englanti)
+    ok2insert = input("Are you sure you want to add '%s' as '%s' to the dictionary? Enter y for 'yes' or 'n' for no.\n"% (suomi,englanti))
+    if ok2insert == 'y':
+        AddVocab(suomi,englanti)
+    else:
+        print("You entered something other than 'y', so I did not add your information to the database.")
     # debugging
     #PrintAllRecords()
 # end addVocab
