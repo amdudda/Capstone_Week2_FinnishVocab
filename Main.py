@@ -1,4 +1,4 @@
-from CreateDB import *
+from Database import *
 from Vocabulary import *
 import random
 '''
@@ -67,7 +67,7 @@ def quizVocab(source_lang):
         # language tells the computer whether to display finnish words or english words as prompts.
         # pick a random vocabulary item and see if the user can give the correct answer.
         # generate a random integer in the range 1..lastID
-        vocabID = random.randint(1,getLastID())
+        vocabID = random.randint(1,getLastID("VOCABULARY"))
         # print out the selected item
         word = getVocabByID(vocabID)
         question = "What is '" + word.getVocab(source_lang) + "' in " + target_lang + "?\n"

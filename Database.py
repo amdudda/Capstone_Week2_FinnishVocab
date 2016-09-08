@@ -118,3 +118,55 @@ def AddVocab(s,e):
         # close the connection
         conn.close()
 # end AddVocab
+
+'''
+MISC VOCABULARY-RELATED METHODS
+'''
+
+def getVocabByID(ID):
+    from Vocabulary import Vocabulary
+    try:
+        #theData = ""
+        # this returns a Vocabulary item based on the record ID in the database
+        conn = sqlite3.connect('FinnVocab.db')
+
+        num2use = str(ID)
+        # debugging: print(num2use)
+        # need to pass a tuple; if you pass a plain string, the query breaks on anything >=10
+        # see http://stackoverflow.com/questions/4409539/pythonsqlite-the-like-query-with-wildcards#4409584
+        # for where I found the answer (while working on team project & looking for something totally unrelated, of course! :D )
+        cursor = conn.execute("SELECT ID, FINNISH, ENGLISH FROM VOCABULARY WHERE ID = ?;", (num2use,))
+
+        # there should be exactly one result returned
+        record = cursor.fetchone()
+        theID = record[0]
+        theFinn = record[1].strip()
+        theEngl = record[2].strip()
+        theData = Vocabulary(theID,theFinn,theEngl)
+    except sqlite3.Error as e:
+        print("Unable to retrieve record number " + str(ID) + ".")
+        traceback.print_exc()
+        # set theData to None so the program can fail gracefully.
+        theData = None
+    finally:
+        # close the connection
+        conn.close()
+        return theData
+# end getByID
+
+def getLastID(table_name):
+    # method to get the last ID number in the database so we can set a random range for pulling record IDs.
+    lastID = 0
+    try:
+        conn = sqlite3.connect('FinnVocab.db')
+        cursor = conn.execute("SELECT MAX(ID) FROM " + table_name + ";")
+        lastID = cursor.fetchone()[0]
+    except sqlite3.Error as e:
+        print("Unable to identify last record in db")
+        traceback.print_exc()
+    finally:
+        # always close the connection when we're done with it.
+        conn.close()
+
+    return lastID
+# end getLastID
