@@ -46,7 +46,7 @@ def quizme():
         elif userinput == OPTION_ADD:
             addVocab()
         elif userinput == OPTION_QUIT:
-            print("Kiitos!")
+            print("Kiitos! (Thanks!)")
             # exit the program
             exit()
             break   # just being cautious - no endless loops, please
@@ -57,27 +57,37 @@ def quizme():
 # End quizme
 
 def quizVocab(language):
-    # asks a player to type in the translation of a word
-    # language tells the computer whether to display finnish words or english words as prompts.
-    # pick a random vocabulary item and see if the user can give the correct answer.
-    # generate a random integer in the range 1..lastID
-    vocabID = random.randint(1,getLastID())
-    # print out the selected item
-    word = getVocabByID(vocabID)
-    question = "What is '" + word.getVocab(language) + "' in " + language + "?\n"
-    xlate = word.getTranslation(language)
-    response = input(question)
-    if (response == xlate):
-        print("You are correct!")
-    else:
-        print("Sorry, the correct answer is " + xlate + ".")
+    # target is the opposite of language - asking what a finnish word is in english or vice versa.
+    target = LANG_FI
+    if language == LANG_FI: target = LANG_EN
+    # wrap in a while loop until player says not to continue
+    playagain = "y"
+    while playagain != "n":
+        # asks a player to type in the translation of a word
+        # language tells the computer whether to display finnish words or english words as prompts.
+        # pick a random vocabulary item and see if the user can give the correct answer.
+        # generate a random integer in the range 1..lastID
+        vocabID = random.randint(1,getLastID())
+        # print out the selected item
+        word = getVocabByID(vocabID)
+        question = "What is '" + word.getVocab(language) + "' in " + target + "?\n"
+        xlate = word.getTranslation(language)
+        response = input(question)
+        if (response == xlate):
+            print("You are correct!")
+        else:
+            print("Sorry, the correct answer is '" + xlate + "'.")
+        playagain = input("Would you like to try another word?  Enter 'y' for yes or 'n' for no.\n").lower()
+# end quizVocab
 
 def addVocab():
     suomi = input("What is the Finnish word you wish to add?\n")
-    englanti = input("What is the English translation for " + suomi + "?\n")
+    englanti = input("What is the English translation for '" + suomi + "'?\n")
     AddVocab(suomi,englanti)
     # debugging
-    PrintAllRecords()
+    #PrintAllRecords()
+# end addVocab
+
 '''
 BODY OF CODE
 '''
