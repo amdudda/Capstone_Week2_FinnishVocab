@@ -56,10 +56,10 @@ def quizme():
     # end while loop
 # End quizme
 
-def quizVocab(language):
-    # target is the opposite of language - asking what a finnish word is in english or vice versa.
-    target = LANG_FI
-    if language == LANG_FI: target = LANG_EN
+def quizVocab(source_lang):
+    # source_lang is the language the user will be presented with - target is what they have to translate it into
+    target_lang = LANG_FI
+    if source_lang == LANG_FI: target_lang = LANG_EN
     # wrap in a while loop until player says not to continue
     playagain = "y"
     while playagain != "n":
@@ -70,8 +70,8 @@ def quizVocab(language):
         vocabID = random.randint(1,getLastID())
         # print out the selected item
         word = getVocabByID(vocabID)
-        question = "What is '" + word.getVocab(language) + "' in " + target + "?\n"
-        xlate = word.getTranslation(language)
+        question = "What is '" + word.getVocab(source_lang) + "' in " + target_lang + "?\n"
+        xlate = word.getTranslation(source_lang)
         response = input(question)
         if (response == xlate):
             print("You are correct!")
