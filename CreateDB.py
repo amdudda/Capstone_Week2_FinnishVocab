@@ -12,6 +12,8 @@ def CreateDB():
         print ("Opened database successfully");
 
         # this sends the create table string to the database so it can run it
+        # INTEGER PRIMARY KEY creates an alias for ROWID in sqlite3 and is analogous to an autoincrement field:
+        # https://sqlite.org/autoinc.html
         conn.execute('''CREATE TABLE VOCABULARY
         (ID INTEGER PRIMARY KEY,
         FINNISH TEXT NOT NULL,
