@@ -71,6 +71,8 @@ def getVocabByID(ID):
 
 def getLastID():
     # method to get the last ID number in the database so we can set a random range for pulling record IDs.
+    # in a larger database with multiple tables, I'd move this into a Database object and maybe pass a variable
+    # for the appropriate table name.
     lastID = 0
     try:
         conn = sqlite3.connect('FinnVocab.db')
