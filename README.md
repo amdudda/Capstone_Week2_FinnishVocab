@@ -20,5 +20,11 @@ Finnish is syntactically very different from English.  It features heavily suffi
 
 This tutor does not cover grammar, prosody, or phonology.  It assumes you already know how to read and pronounce Finnish words, and you're on your own for figuring out how to construct syntactially valid statements.
 
+## Future updates/fixes
+
+* The database does not check whether new entries already exist.
+* Store a difficulty rating, or assign textbook-style chapters to vocabulary items, so that users can set a difficulty rating for the words they are asked about.
+* A table of useful tourist phrases users can practice.
+
 ## Credits
 vocab1.txt is gleaned from http://sssscomic.com/comic.php?page=195
