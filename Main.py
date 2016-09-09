@@ -72,7 +72,7 @@ def quizVocab(source_lang):
         word = getVocabByID(vocabID)
         question = "What is '" + word.getVocab(source_lang) + "' in " + target_lang + "?\n"
         xlate = word.getTranslation(source_lang)
-        response = input(question)
+        response = input(question).lower()  # let's be kind and not demand case sensitivity in responses
         if (response == xlate):
             print("You are correct!")
         else:
@@ -81,8 +81,9 @@ def quizVocab(source_lang):
 # end quizVocab
 
 def addVocab():
-    suomi = input("What is the Finnish word you wish to add?\n")
-    englanti = input("What is the English translation for '" + suomi + "'?\n")
+    # we're going to store data in lowercase to maintain consistency
+    suomi = input("What is the Finnish word you wish to add?\n").lower()
+    englanti = input("What is the English translation for '" + suomi + "'?\n").lower()
     ok2insert = input("Are you sure you want to add '%s' as '%s' to the dictionary? Enter y for 'yes' or 'n' for no.\n"% (suomi,englanti))
     if ok2insert == 'y':
         AddVocab(suomi,englanti)
